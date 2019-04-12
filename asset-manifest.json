@@ -1,0 +1,14 @@
+{
+  "main.css": "/ticket-system/static/css/main.9dda9cf6.chunk.css",
+  "main.js": "/ticket-system/static/js/main.c6ac1880.chunk.js",
+  "main.js.map": "/ticket-system/static/js/main.c6ac1880.chunk.js.map",
+  "runtime~main.js": "/ticket-system/static/js/runtime~main.2d85e965.js",
+  "runtime~main.js.map": "/ticket-system/static/js/runtime~main.2d85e965.js.map",
+  "static/js/2.965e711e.chunk.js": "/ticket-system/static/js/2.965e711e.chunk.js",
+  "static/js/2.965e711e.chunk.js.map": "/ticket-system/static/js/2.965e711e.chunk.js.map",
+  "index.html": "/ticket-system/index.html",
+  "precache-manifest.f1cf48e55d816de6538e6cda8c0a3bab.js": "/ticket-system/precache-manifest.f1cf48e55d816de6538e6cda8c0a3bab.js",
+  "service-worker.js": "/ticket-system/service-worker.js",
+  "static/css/main.9dda9cf6.chunk.css.map": "/ticket-system/static/css/main.9dda9cf6.chunk.css.map",
+  "static/media/logo.svg": "/ticket-system/static/media/logo.5d5d9eef.svg"
+}
