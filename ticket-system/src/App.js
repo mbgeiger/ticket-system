@@ -6,13 +6,21 @@ import { HashRouter, BrowserRouter as Router, Route, Link } from "react-router-d
 import './App.css';
 
 import Home from "./component/Home";
+import Tickets from './component/Tickets';
+import { Switch } from 'react-router/esm/react-router';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Route path={"Home"} component={Home}/>
-        <Route path={"/"} component={Home}/>
+        
+        <Switch>
+        <Route  path={"Home"} component={Home} />
+        <Route  path={"Tickets"} component={Tickets} />
+
+        <Route  path={"/"} component={Home} />
+        </Switch>
+        
 
         
       </Router>
