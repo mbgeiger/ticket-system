@@ -12,8 +12,8 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
 
-    "react-scripts": "2.1.8",
-    "sequelize": "^5.7.0"
+    
+    "sequelize": "^5.7.0",
 
     "react-scripts": "^2.1.8",
     "yarn": "^1.15.2"
