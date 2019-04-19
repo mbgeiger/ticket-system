@@ -2,6 +2,7 @@
 // =============================================================
 var express = require("express");
 var passport = require('passport');
+var routes = require("./routes");
 
 // Sets up the Express App
 // =============================================================
@@ -21,12 +22,11 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/apiRoutes.js")(app);
-require("./routes/htmlRoutes.js")(app);
+app.use(routes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
