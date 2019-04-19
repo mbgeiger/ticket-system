@@ -2,7 +2,9 @@
 import React, { Component } from 'react'
 import { HashRouter, Router, Route, Link } from "react-router-dom"
 //import logo from './logo.svg'
-import '../App.css'
+
+import classes from '../../src/'
+
 
 class Home extends Component {
   render() {
