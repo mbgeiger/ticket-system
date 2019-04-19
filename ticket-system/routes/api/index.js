@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const helpdeskRoutes = require("./helpdesk");
+const indexController = require("../../controllers/indexController");
 
-// Book routes
-router.use("/tickets", helpdeskRoutes);
-
+// Matches with "/api/books"
+router.route("/login")
+    .post(indexController.login);
+    
 module.exports = router;
