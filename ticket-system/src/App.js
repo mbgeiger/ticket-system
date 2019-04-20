@@ -1,10 +1,5 @@
-
 import React, { Component } from 'react';
 import { HashRouter, BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-//import logo from './logo.svg';
-import './App.css';
-
 import Home from "./component/Home";
 import Tickets from './component/Tickets';
 import { Switch } from 'react-router/esm/react-router';
