@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { HashRouter, Router, Route, Link } from "react-router-dom"
 //import logo from './logo.svg'
 import '../App.css'
+import API from "../utils/API"
 
 class Tickets extends Component {
   render() {
@@ -10,7 +11,7 @@ class Tickets extends Component {
       <div classNameName="wrapper">
       <Nav />
       <Modal />
-      
+      <TicketDisplay />
       </div>
      
     )
@@ -20,15 +21,10 @@ class Tickets extends Component {
 class Nav extends React.Component {
     render() {
         return(
-
-    
             <div classNameName="navbar navbar-expand navbar-light bg-light justify-content-between">
             <button type="button" classNameName="btn btn-lg btn-success" data-toggle="modal" data-target="#ticketModal"><span className="fas fa-plus" id="createTicket"></span> Create Ticket
              </button>
              </div>
-       
-
-       
         )
     }
 }
@@ -36,9 +32,6 @@ class Nav extends React.Component {
 class Modal extends React.Component {
   render() {
       return(
-
-  
-         
         <div id="ticketModal" className="modal fade" role="dialog">
         <div classNameName="modal-dialog">
             <div className="modal-content">
@@ -71,16 +64,41 @@ class Modal extends React.Component {
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
-     
-
-     
       )
   }
+}
+
+class TicketDisplay extends React.Component{
+    state = {
+        Tickets: [],
+        Title: "",
+        Status: "",
+        Assigned_To: "",
+        Description: "",
+        Closed: Boolean,
+        Notes: "",
+        Created_By: ""
+    };
+
+    componentDidMount() {
+        this.loadTickets();
+    }
+
+    loadTickets = ()=>{
+        API.getTickets()
+            .then(res =>
+                this.setState({tickets: res.data, Title: "", Status: "", Assigned_To: "", Description: "", Closed: "false", Notes: "", Created_By: ""})
+                )
+                .catch(err => console.log(err));
+    };
+
+    render(){
+        return(
+            <div className="">
+            </div>
+        );
+    }
 }
 
 

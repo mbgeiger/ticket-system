@@ -59,7 +59,7 @@ class InputGroup extends Component {
             </div>
             <input type="password" placeholder="Password" name="password" required/>
         </div>
-          <button id="login">Login</button>
+          <button className="btn btn-success" id="login">Login</button>
       </form>
 
       )
