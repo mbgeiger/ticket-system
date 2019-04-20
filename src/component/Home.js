@@ -1,13 +1,9 @@
 
 import React, { Component } from 'react'
 import { HashRouter, Router, Route, Link } from "react-router-dom"
-import { Button, Nav, NavDropdown, NavItem, Navbar, Form, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
-
 //import logo from './logo.svg'
 
-import  '../../src/App.css'
-
-
+import classes from '../../src/'
 
 
 class Home extends Component {
@@ -16,8 +12,6 @@ class Home extends Component {
       <div className="wrapper">
       <TopWrapper />
       <InputGroup />
-     
-      
       </div>
      
     )
@@ -35,7 +29,6 @@ class TopWrapper extends React.Component {
     <div className="container">
         <h1>IT Help Desk</h1>
         <p>Please Login to Access Your Tickets</p>
-
     </div>
 
   </div>
@@ -53,10 +46,7 @@ class TopWrapper extends React.Component {
 class InputGroup extends Component {
     render() {
       return(
-
-     
-
-        <Form action="/api/login" method = "post">
+        <form action="/api/login" method = "post">
         <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
@@ -69,20 +59,16 @@ class InputGroup extends Component {
             </div>
             <input type="password" placeholder="Password" name="password" required/>
         </div>
-          <Button bsStyle='Primary' id="login">Login</Button>
-
-         
-      </Form>
-
+          <button id="login">Login</button>
+      </form>
 
       )
-      
-
     }
 
 
 }
 
-
+//const Home = () => <div><h2>Home</h2></div>
+//const About = () => <div><h2>About</h2></div>
 
 export default Home;

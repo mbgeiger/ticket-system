@@ -8,8 +8,6 @@ import './App.css';
 import Home from "./component/Home";
 import Tickets from './component/Tickets';
 import { Switch } from 'react-router/esm/react-router';
-import { Button, Nav, NavDropdown, NavItem, Navbar, Form, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
-
 
 class App extends Component {
   render() {
@@ -28,8 +26,6 @@ class App extends Component {
 
         
       </Router>
-
-      
 
       );
     }
