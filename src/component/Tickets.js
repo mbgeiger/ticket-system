@@ -81,7 +81,8 @@ class TicketDisplay extends React.Component{
         Created_By: ""
     };
 
-    componentDidMount() {
+
+   componentDidMount() {
         this.loadTickets();
     }
 
@@ -105,7 +106,5 @@ class TicketDisplay extends React.Component{
 
 
 
-//const Home = () => <div><h2>Home</h2></div>
-//const About = () => <div><h2>About</h2></div>
 
 export default Tickets;
