@@ -22,9 +22,9 @@ class TopWrapper extends React.Component {
     render() {
         return(
 
-    <div className="card card-login mx-auto text-center bg-dark">
+    <div className="card card-login mx-auto text-center">
 
-    <div className="card-header mx-auto bg-dark">
+    <div className="card-header mx-auto">
     </div>
     <div className="container">
         <h1>IT Help Desk</h1>
