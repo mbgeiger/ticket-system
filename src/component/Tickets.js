@@ -1,7 +1,5 @@
-
 import React, { Component } from 'react'
 import { HashRouter, Router, Route, Link } from "react-router-dom"
-//import logo from './logo.svg'
 import '../App.css'
 import API from "../utils/API"
 
@@ -13,7 +11,6 @@ class Tickets extends Component {
       <Modal />
       <TicketDisplay />
       </div>
-     
     )
    }
 }
@@ -72,6 +69,7 @@ class Modal extends React.Component {
 class TicketDisplay extends React.Component{
     state = {
         Tickets: [],
+        id: "",
         Title: "",
         Status: "",
         Assigned_To: "",
@@ -85,27 +83,58 @@ class TicketDisplay extends React.Component{
         this.loadTickets();
     }
 
-    loadTickets = ()=>{
+    loadTickets = () => {
+        console.log("called");
         API.getTickets()
             .then(res =>
-                this.setState({tickets: res.data, Title: "", Status: "", Assigned_To: "", Description: "", Closed: "false", Notes: "", Created_By: ""})
+                this.setState({Tickets: res.data, Title: "", id: "", Status: "", Assigned_To: "", Description: "", Closed: "false", Notes: "", Created_By: ""})
                 )
                 .catch(err => console.log(err));
+                
+        console.log(this.state.Tickets);
     };
 
     render(){
         return(
-            <div className="">
+            <div className="container" id="userTickets">
+                <div className="row">
+                    <div className="col-md-8 col-md-offset-2">
+                        <div className="panel panel-default ticket-list">
+                            <div className="panel-heading">
+                                <h3 className="panel-title text-center">All Tickets</h3>
+                            </div>
+                            {this.state.Tickets.length ? (
+                                <div className="panel-body ">
+                                    <table className="table">
+                                        <thead className='table-head'>
+                                            <tr className='table-head'>
+                                                <th>Ticket Number</th>
+                                                <th>Description</th>
+                                                <th>Status</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>                                      
+                                        {this.state.Tickets.map(ticket => (
+                                            <tbody id="userTicketsAppend">
+                                                <tr className="table-row">
+                                                    <td>{ticket.id}</td>
+                                                    <td>{ticket.Description}</td>
+                                                    <td>{ticket.Status}</td>
+                                                    <td><button className="btn btn-warning">Details</button></td>
+                                                </tr>
+                                            </tbody>
+                                                 ))}
+                                    </table>
+                                </div>
+                                    ) : (
+                                        <h3>No results to Display</h3>
+                                    )}               
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
 }
-
-
-
-
-
-//const Home = () => <div><h2>Home</h2></div>
-//const About = () => <div><h2>About</h2></div>
 
 export default Tickets;

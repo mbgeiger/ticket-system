@@ -2,14 +2,14 @@ const router = require("express").Router();
 const helpDeskController = require("../../controllers/helpDeskController");
 
 router
-    .route("/tickets")
+    .route("/")
     .get(helpDeskController.findAll)
     .post(helpDeskController.create);
 
 router
     .route("/:id")
     .get(helpDeskController.findById)
-    .put(helpDeskController.update)
+    .put(helpDeskController.update);
 
 
 router

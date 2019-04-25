@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(passport.initialize());
 
 // Static directory
-app.use(express.static("./public"));
+app.use(express.static("public"));
 
 // Routes
 // =============================================================
