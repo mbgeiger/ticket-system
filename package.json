@@ -1,44 +1,43 @@
 {
-  "name": "ticket-system",
-  "homepage": "https://mbgeiger.github.com/ticket-system",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "babel": "^6.23.0",
-    "babel-preset-react-app": "^7.0.2",
-    "express": "^4.16.4",
-    "gh-pages": "^2.0.1",
-    "mysql": "^2.16.0",
-    "node": "^11.13.0",
-    "passport": "^0.4.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "^2.1.8",
-    "sequelize": "^5.7.0",
-    "sequelizr": "0.0.1",
-    "yarn": "^1.15.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "dom-to-react": "^1.0.0"
-  }
+    "name": "ticket-system",
+    "homepage": "https://mbgeiger.github.com/ticket-system",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "axios": "^0.18.0",
+        "express": "^4.16.4",
+        "gh-pages": "^2.0.1",
+        "mysql": "^2.16.0",
+        "mysql2": "^1.6.5",
+        "passport": "^0.4.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-router": "^5.0.0",
+        "react-router-dom": "^5.0.0",
+        "react-scripts": "^2.1.8",
+        "sequelize": "^5.7.0",
+        "sequelizr": "0.0.1",
+        "yarn": "^1.15.2"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "dom-to-react": "^1.0.0"
+    }
+
 }

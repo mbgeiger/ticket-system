@@ -2,8 +2,8 @@ const db = require("../models");
 
 module.exports = {
     findAll: function(req, res) {
-        db.Helpdesk.findAll({}).then(function(dbHelpdesk) {
-            res.json(dbHelpdesk);
+        db.Helpdesks.findAll().then(function(dbHelpdesk) {
+            return res.json(dbHelpdesk);
         });
     },
 
