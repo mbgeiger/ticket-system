@@ -79,7 +79,8 @@ class TicketDisplay extends React.Component{
         Created_By: ""
     };
 
-    componentDidMount() {
+
+   componentDidMount() {
         this.loadTickets();
     }
 

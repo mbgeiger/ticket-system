@@ -105,6 +105,22 @@ form
   text-align: center;
 }
 
+.card-header{
+  background-color: #66b9bf;
+  text-align:center;
+  
+}
+
+.jumbotron {
+  background-color: #66b9bf;
+  text-align:center;
+
+}
+
+.btn-success {
+  background-color: #66b9bf;
+}
+
 /*Hide All tickets div*/
 #allTickets {
   display: none;

@@ -3,6 +3,7 @@ import { HashRouter, BrowserRouter as Router, Route, Link } from "react-router-d
 import Home from "./component/Home";
 import Tickets from './component/Tickets';
 import { Switch } from 'react-router/esm/react-router';
+import Signup from './component/Signup';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
 
         <Route  path={"/Home"} component={Home} />
         <Route  path={"/Tickets"} component={Tickets} />
+        <Route  path={"/Signup"} component={Signup} />
 
 
         <Route  path={"/"} component={Home} />
@@ -28,7 +30,6 @@ class App extends Component {
 
 }
 
-//const Home = () => <div><h2>Home</h2></div>
-const About = () => <div><h2>About</h2></div>
+
 
 export default App;
