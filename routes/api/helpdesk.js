@@ -3,7 +3,8 @@ const helpDeskController = require("../../controllers/helpDeskController");
 
 router
     .route("/")
-    .get(helpDeskController.findAll)
+    .get(helpDeskController.findAll);
+/*
     .post(helpDeskController.create);
 
 router
@@ -14,6 +15,6 @@ router
 
 router
     .route("/usersTickets")
-    .get(helpDeskController.getOneUser);
+    .get(helpDeskController.getOneUser);*/
 
 module.exports = router;

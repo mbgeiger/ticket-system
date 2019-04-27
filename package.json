@@ -7,6 +7,7 @@
         "axios": "^0.18.0",
         "express": "^4.16.4",
         "gh-pages": "^2.0.1",
+        "mongoose": "^5.5.4",
         "mysql": "^2.16.0",
         "mysql2": "^1.6.5",
         "passport": "^0.4.0",
@@ -39,5 +40,4 @@
     "devDependencies": {
         "dom-to-react": "^1.0.0"
     }
-
 }

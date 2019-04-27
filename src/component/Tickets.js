@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { HashRouter, Router, Route, Link } from "react-router-dom"
 import '../App.css'
-import API from "../utils/API"
+import API from "../utils/API";
 
 class Tickets extends Component {
   render() {
@@ -85,14 +85,11 @@ class TicketDisplay extends React.Component{
     }
 
     loadTickets = () => {
-        console.log("called");
         API.getTickets()
             .then(res =>
                 this.setState({Tickets: res.data, Title: "", id: "", Status: "", Assigned_To: "", Description: "", Closed: "false", Notes: "", Created_By: ""})
                 )
                 .catch(err => console.log(err));
-                
-        console.log(this.state.Tickets);
     };
 
     render(){
