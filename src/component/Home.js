@@ -5,13 +5,6 @@ import { HashRouter, BrowserRouter, Router, Route, Link, Redirect } from "react-
 
 import classes from '../../src/'
 
-
-
-
-
-
-
-
 class Home extends Component {
   render() {
     return (
@@ -39,38 +32,64 @@ class TopWrapper extends React.Component {
 
   </div>
 
-  
-
-  
- 
-
-
         )
     }
 }
 
-
-
-
 class InputGroup extends Component {
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      password: '',
+      error: '',
+    };
+
+    this.handlePassChange = this.handlePassChange.bind(this);
+    this.handleUserChange = this.handleUserChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.dismissError = this.dismissError.bind(this);
+  }
+
+  dismissError() {
+    this.setState({ error: '' });
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+
+    console.log(this.state.username +" "+ this.state.password);
+    
+  }
+
+  handleUserChange(evt) {
+    this.setState({
+      username: evt.target.value,
+    });
+  };
+
+  handlePassChange(evt) {
+    this.setState({
+      password: evt.target.value,
+    });
+  }
     render() {
       return(
-        <form action="/api/login" method = "post">
+        <form onSubmit={this.handleSubmit}>
         <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input type="text" placeholder="Username" name="username" id="username" required/>
+            <input type="text" data-test="username" placeholder="Username" value={this.state.username} onChange={this.handleUserChange} required />
         </div>
         <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" placeholder="Password" name="password" required/>
+            <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
         </div>
           <button className="btn btn-dark" id="login">Login</button>
-          <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./Signup"; }}>Create Account</button>
-          
+          <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./Signup"; }}>Create Account</button>  
       </form>
 
       
