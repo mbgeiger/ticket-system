@@ -22,10 +22,11 @@ class Signup extends Component {
     
     render() {
         return (
+            <div className="signup"><h2>Create an account</h2>
+            
             <div className="form-inline" >
-                <h2>Sign Up</h2>
                 
-                <div className="form group">
+            <div className="form group">
                     <input className="form-control"
                     type="text"
                     placeholder="Username"
@@ -33,17 +34,18 @@ class Signup extends Component {
                     />
                     <input
                         className="form-control"
-                        type="password"
-                        placeholder="password"
+                        type="Password"
+                        placeholder="Password"
                         onChange={event => this.setState({password: event.target.value})}
                         />
                         <button
-                            className="btn btn-light"
+                            className="btn btn-dark"
                             type="button"
                             onClick={() => this.signUp()}
                             >
                             Sign up
                             </button>
+                </div>
                 </div>
                 </div>
 
