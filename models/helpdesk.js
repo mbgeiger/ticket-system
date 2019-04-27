@@ -1,30 +1,14 @@
-module.exports = function(sequelize, DataTypes) {
-    var Helpdesk = sequelize.define("Helpdesk", {
-        Title: DataTypes.TEXT,
-        Status: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: "Open"
-        },
-        Assigned_To: DataTypes.STRING,
-        Description: {
-            type: DataTypes.TEXT,
-            validate: {
-                len: [1]
-            }
-        },
-        Closed: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        },
-        Notes: {
-            type: DataTypes.TEXT
-        },
-        Created_By: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-    return Helpdesk;
-};
+const ticketSchema = new Schema({
+    title: { type: String, required: true },
+    status: { type: String, required: true },
+    assigned_to: String,
+    description: { type: String, required: true },
+    notes: String,
+    created_by: { type: String, required: true }
+});
+
+const Ticket = mongoose.model("Ticket", ticketSchema);
+module.exports = Ticket;
