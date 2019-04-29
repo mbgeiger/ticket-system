@@ -6,6 +6,6 @@ const ticketRoutes = require("./helpdesk");
 /*router.route("/login")
     .post(indexController.login);*/
 
-router.route("/tickets", ticketRoutes);
+router.use("/tickets", ticketRoutes);
 
 module.exports = router;
