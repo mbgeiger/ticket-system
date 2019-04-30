@@ -7,7 +7,11 @@ const signuproutes = require("./signup")
 /*router.route("/login")
     .post(indexController.login);*/
 
+<<<<<<< HEAD
+router.use("/tickets", ticketRoutes);
+=======
 router.route("/tickets", ticketRoutes);
 router.route("/signup", signupRoutes);
+>>>>>>> master
 
 module.exports = router;

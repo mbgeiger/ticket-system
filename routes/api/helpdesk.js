@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const helpDeskController = require("../../controllers/helpDeskController");
 
-router
-    .route("/")
+router.route("/")
     .get(helpDeskController.findAll);
 /*
     .post(helpDeskController.create);
