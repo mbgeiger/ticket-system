@@ -21,13 +21,14 @@ app.use(passport.initialize());
 
 // Static directory
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("public/build"));
+    app.use(express.static("client/build"));
 }
 
 // Routes
 // =============================================================
 app.use(routes);
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/helpdesk");
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/helpdesk", { useNewUrlParser: true });
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);

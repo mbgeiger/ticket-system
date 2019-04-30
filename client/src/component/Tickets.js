@@ -68,7 +68,7 @@ class Modal extends React.Component {
 
 class TicketDisplay extends React.Component{
     state = {
-        Tickets: [],
+        tickets: [],
         _id: "",
         title: "",
         status: "",
@@ -84,11 +84,15 @@ class TicketDisplay extends React.Component{
     }
 
     loadTickets = () => {
+        console.log("called");
         API.getTickets()
             .then(res =>
-                this.setState({Tickets: res.data})
+                console.log(res.data)
+                //this.setState({tickets: res.data})
                 )
                 .catch(err => console.log(err));
+                
+        console.log(this.state.tickets);
     };
 
 
@@ -101,7 +105,7 @@ class TicketDisplay extends React.Component{
                             <div className="panel-heading">
                                 <h3 className="panel-title text-center">All Tickets</h3>
                             </div>
-                            {this.state.Tickets.length ? (
+                            {this.state.tickets.length ? (
                                 <div className="panel-body ">
                                     <table className="table">
                                         <thead className='table-head'>
@@ -112,7 +116,7 @@ class TicketDisplay extends React.Component{
                                                 <th>Options</th>
                                             </tr>
                                         </thead>                                      
-                                        {this.state.Tickets.map(ticket => (
+                                        {this.state.tickets.map(ticket => (
                                             <tbody id="userTicketsAppend">
                                                 <tr className="table-row">
                                                     <td>{ticket._id}</td>
