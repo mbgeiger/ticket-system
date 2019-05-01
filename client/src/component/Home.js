@@ -1,10 +1,6 @@
 
 import React, { Component } from 'react'
-<<<<<<< HEAD:client/src/component/Home.js
-//import { HashRouter, Router, Route, Link } from "react-router-dom"
-=======
 import { HashRouter, BrowserRouter, Router, Route, Link, Redirect } from "react-router-dom"
->>>>>>> master:src/component/Home.js
 //import logo from './logo.svg'
 
 import classes from '../../src/'

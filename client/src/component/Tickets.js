@@ -121,7 +121,11 @@ class TicketDisplay extends React.Component{
     loadTickets = () => {
         API.getTickets()
             .then(res =>
-                this.setState({Tickets: res.data, Title: "", id: "", Status: "", Assigned_To: "", Description: "", Closed: "false", Notes: "", Created_By: ""})
+
+                {this.setState({tickets: res.data}) 
+                console.log(this.state.tickets)    
+            }
+
                 )
                 .catch(err => console.log(err));
     };
