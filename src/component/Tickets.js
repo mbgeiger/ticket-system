@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { HashRouter, Router, Route, Link } from "react-router-dom"
+import { Button, ButtonToolbar, Modal} from 'react-bootstrap';
+
 import '../App.css'
 import API from "../utils/API";
 
@@ -8,38 +9,68 @@ class Tickets extends Component {
     return (
       <div classNameName="wrapper">
       <Nav />
-      <Modal />
+      <Ticketmodal />
       <TicketDisplay />
+     
+      
       </div>
     )
    }
 }
 
 class Nav extends React.Component {
+    constructor(...args) {
+        super(...args);
+    
+        this.state = { modalShow: false };
+      }
     render() {
-        return(
-            <div classNameName="navbar navbar-expand navbar-light bg-light justify-content-between">
-            <button type="button" classNameName="btn btn-lg btn-success" data-toggle="modal" data-target="#ticketModal"><span className="fas fa-plus" id="createTicket"></span> Create Ticket
-             </button>
-             </div>
-        )
+        
+
+            let modalClose = () => this.setState({ modalShow: false });
+  
+      return (
+        <ButtonToolbar>
+          <Button
+            variant="primary"
+            onClick={() => this.setState({ modalShow: true })}
+          >
+            Create Ticket
+          </Button>
+  
+          <Ticketmodal
+            show={this.state.modalShow}
+            onHide={modalClose}
+          />
+        </ButtonToolbar>
+            
+            
+            
+            
+            
+            
+        );
     }
 }
 
-class Modal extends React.Component {
-  render() {
-      return(
-        <div id="ticketModal" className="modal fade" role="dialog">
-        <div classNameName="modal-dialog">
-            <div className="modal-content">
-                <div className="modal-header text-center">
-                    <h4 className="modal-title w-100 font-weight-bold">What Can We Help You With?</h4>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-           </button>
-                </div>
-                <div className="modal-body mx-3">
-                    <div className="dropdown">
+
+
+class Ticketmodal extends React.Component {
+    render() {
+      return (
+        <Modal
+          {...this.props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              Request Type
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <div className="dropdown">
                         <label for="request-type">Request Type</label>
                         <select className="form-control" id="request-type">
                             <option value="log in">Log In</option>
@@ -55,16 +86,19 @@ class Modal extends React.Component {
                         <textarea type="text" id="problem-description" className="md-textarea form-control" rows="4"></textarea>
                         <label data-error="wrong" data-success="right" for="form8">Description</label>
                     </div>
-                    <div className="modal-footer d-flex justify-content-center">
-                        <button className="btn btn-unique" id="submit" data-dismiss="modal">Send <i className="fas fa-paper-plane-o ml-1"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-      )
+                   
+          </Modal.Body>
+          <Modal.Footer>
+            <Button id='submit' onClick={this.props.onHide}>Submit</Button>
+          </Modal.Footer>
+        </Modal>
+      );
+    }
   }
-}
+  
+
+  
+
 
 class TicketDisplay extends React.Component{
     state = {
