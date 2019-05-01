@@ -9,14 +9,14 @@ const cors = require('cors');
 
 // Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(cors());
+//pp.use(bodyParser.json());
+//app.use(cors());
 app.use(passport.initialize());
 
 // Static directory

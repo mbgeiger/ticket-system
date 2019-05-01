@@ -87,14 +87,12 @@ class TicketDisplay extends React.Component{
         console.log("called");
         API.getTickets()
             .then(res =>
-                console.log(res.data)
-                //this.setState({tickets: res.data})
+                {this.setState({tickets: res.data}) 
+                console.log(this.state.tickets)    
+            }
                 )
                 .catch(err => console.log(err));
-                
-        console.log(this.state.tickets);
     };
-
 
     render(){
         return(
