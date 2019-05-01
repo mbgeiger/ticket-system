@@ -24,7 +24,7 @@ class Signup extends Component {
         return (
             <div className="signup"><h2>Create an account</h2>
             
-            <div className="form-inline" >
+            <div className="form-inline justify-content-center" >
                 
             <div className="form group">
                     <input className="form-control"
