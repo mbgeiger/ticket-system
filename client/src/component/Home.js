@@ -1,12 +1,8 @@
 
 import React, { Component } from 'react'
-<<<<<<< HEAD:client/src/component/Home.js
-//import { HashRouter, Router, Route, Link } from "react-router-dom"
-=======
 import { HashRouter, BrowserRouter, Router, Route, Link, Redirect } from "react-router-dom"
->>>>>>> master:src/component/Home.js
 //import logo from './logo.svg'
-
+import API from "../utils/API";
 import classes from '../../src/'
 
 class Home extends Component {
@@ -47,6 +43,7 @@ class InputGroup extends Component {
       username: '',
       password: '',
       error: '',
+      login:''
     };
 
     this.handlePassChange = this.handlePassChange.bind(this);
@@ -63,6 +60,15 @@ class InputGroup extends Component {
     evt.preventDefault();
 
     console.log(this.state.username +" "+ this.state.password);
+    console.log("called");
+        API.getLogin()
+            .then(res =>
+                console.log(res.data)
+                //this.setState({tickets: res.data})
+                )
+                .catch(err => console.log(err));
+                
+        this.setState({login:true});
     
   }
 
