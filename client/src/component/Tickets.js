@@ -1,46 +1,77 @@
 import React, { Component } from 'react'
-//import { HashRouter, Router, Route, Link } from "react-router-dom"
+import { Button, ButtonToolbar, Modal} from 'react-bootstrap';
+
 import '../App.css'
 import API from "../utils/API";
 
 class Tickets extends Component {
   render() {
     return (
-      <div className="wrapper">
+      <div classNameName="wrapper">
       <Nav />
-      <Modal />
+      <Ticketmodal />
       <TicketDisplay />
+     
+      
       </div>
     )
    }
 }
 
 class Nav extends React.Component {
+    constructor(...args) {
+        super(...args);
+    
+        this.state = { modalShow: false };
+      }
     render() {
-        return(
-            <div className="navbar navbar-expand navbar-light bg-light justify-content-between">
-            <button type="button" className="btn btn-lg btn-success" data-toggle="modal" data-target="#ticketModal"><span className="fas fa-plus" id="createTicket"></span> Create Ticket
-             </button>
-             </div>
-        )
+        
+
+            let modalClose = () => this.setState({ modalShow: false });
+  
+      return (
+        <ButtonToolbar>
+          <Button
+            variant="primary"
+            onClick={() => this.setState({ modalShow: true })}
+          >
+            Create Ticket
+          </Button>
+  
+          <Ticketmodal
+            show={this.state.modalShow}
+            onHide={modalClose}
+          />
+        </ButtonToolbar>
+            
+            
+            
+            
+            
+            
+        );
     }
 }
 
-class Modal extends React.Component {
-  render() {
-      return(
-        <div id="ticketModal" className="modal fade" role="dialog">
-        <div className="modal-dialog">
-            <div className="modal-content">
-                <div className="modal-header text-center">
-                    <h4 className="modal-title w-100 font-weight-bold">What Can We Help You With?</h4>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-           </button>
-                </div>
-                <div className="modal-body mx-3">
-                    <div className="dropdown">
-                        <label htmlFor="request-type">Request Type</label>
+
+
+class Ticketmodal extends React.Component {
+    render() {
+      return (
+        <Modal
+          {...this.props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              Request Type
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <div className="dropdown">
+                        <label for="request-type">Request Type</label>
                         <select className="form-control" id="request-type">
                             <option value="log in">Log In</option>
                             <option value="facilities">Facilities</option>
@@ -53,29 +84,33 @@ class Modal extends React.Component {
                     <div className="md-form">
                         <i className="fas fa-pencil prefix grey-text"></i>
                         <textarea type="text" id="problem-description" className="md-textarea form-control" rows="4"></textarea>
-                        <label data-error="wrong" data-success="right" htmlFor="form8">Description</label>
+                        <label data-error="wrong" data-success="right" for="form8">Description</label>
                     </div>
-                    <div className="modal-footer d-flex justify-content-center">
-                        <button className="btn btn-unique" id="submit" data-dismiss="modal">Send <i className="fas fa-paper-plane-o ml-1"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-      )
+                   
+          </Modal.Body>
+          <Modal.Footer>
+            <Button id='submit' onClick={this.props.onHide}>Submit</Button>
+          </Modal.Footer>
+        </Modal>
+      );
+    }
   }
-}
+  
+
+  
+
 
 class TicketDisplay extends React.Component{
     state = {
-        tickets: [],
-        _id: "",
-        title: "",
-        status: "",
-        assigned_to: "",
-        description: "",
-        notes: "",
-        created_by: ""
+        Tickets: [],
+        id: "",
+        Title: "",
+        Status: "",
+        Assigned_To: "",
+        Description: "",
+        Closed: Boolean,
+        Notes: "",
+        Created_By: ""
     };
 
 
@@ -84,12 +119,13 @@ class TicketDisplay extends React.Component{
     }
 
     loadTickets = () => {
-        console.log("called");
         API.getTickets()
             .then(res =>
+
                 {this.setState({tickets: res.data}) 
                 console.log(this.state.tickets)    
             }
+
                 )
                 .catch(err => console.log(err));
     };
@@ -103,7 +139,7 @@ class TicketDisplay extends React.Component{
                             <div className="panel-heading">
                                 <h3 className="panel-title text-center">All Tickets</h3>
                             </div>
-                            {this.state.tickets.length ? (
+                            {this.state.Tickets.length ? (
                                 <div className="panel-body ">
                                     <table className="table">
                                         <thead className='table-head'>
@@ -114,12 +150,12 @@ class TicketDisplay extends React.Component{
                                                 <th>Options</th>
                                             </tr>
                                         </thead>                                      
-                                        {this.state.tickets.map(ticket => (
+                                        {this.state.Tickets.map(ticket => (
                                             <tbody id="userTicketsAppend">
                                                 <tr className="table-row">
-                                                    <td>{ticket._id}</td>
-                                                    <td>{ticket.description}</td>
-                                                    <td>{ticket.status}</td>
+                                                    <td>{ticket.id}</td>
+                                                    <td>{ticket.Description}</td>
+                                                    <td>{ticket.Status}</td>
                                                     <td><button className="btn btn-warning">Details</button></td>
                                                 </tr>
                                             </tbody>
