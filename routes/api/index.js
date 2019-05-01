@@ -2,16 +2,14 @@ const router = require("express").Router();
 //const indexController = require("../../controllers/indexController");
 const ticketRoutes = require("./helpdesk");
 const signuproutes = require("./signup")
+const loginRoutes = require("./index")
 
 // Matches with "/api/books"
 /*router.route("/login")
     .post(indexController.login);*/
 
-<<<<<<< HEAD
-router.use("/tickets", ticketRoutes);
-=======
 router.route("/tickets", ticketRoutes);
 router.route("/signup", signupRoutes);
->>>>>>> master
+router.route("/login", loginRoutes);
 
 module.exports = router;
