@@ -31,7 +31,7 @@ class Nav extends React.Component {
   
       return (
         <ButtonToolbar>
-          <Button
+          <Button className="btn btn-dark"
             variant="primary"
             onClick={() => this.setState({ modalShow: true })}
           >
