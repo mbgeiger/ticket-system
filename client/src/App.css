@@ -120,6 +120,19 @@ form
 .btn-success {
   background-color: #66b9bf;
 }
+.btn btn-primary {
+  background-color: #66b9bf;
+  }
+  .btn btn-warning {
+
+    background-color: #66b9bf;
+  }
+  .submit {
+    background-color: #66b9bf;
+  }
+  .createticket{
+    background-color: #66b9bf;
+  }
 .signup {
   text-align: center;
   background-color: #66b9bf;
