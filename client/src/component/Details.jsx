@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import API from "../utils/API";
+import {Redirect} from "react-router";
 
 class UpdateTicket extends Component {
     state = {
         tickets: [],
-        title: "",
         notes: "",
-        status: ""
+        status: "",
+        toTickets: false
     };
 
     componentDidMount(){
@@ -33,16 +34,18 @@ class UpdateTicket extends Component {
         console.log("called");
         console.log(this.state.notes);
         console.log(this.state.status);
-        API.updateOne({
-            title: this.state.title,
+        API.updateOne(this.props.match.params.id,{
             notes: this.state.notes,
             status: this.state.status
         })  
             .catch(err => console.log(err))
-            //.then(window.location.reload());
+            .then(this.setState({toTickets: true}));
     };
 
     render() {
+        if(this.state.toTickets){
+            return <Redirect to='/tickets' />
+        }
         return (
             <div className="container">
             <form>
@@ -56,7 +59,10 @@ class UpdateTicket extends Component {
                 </div>  
                 <div className="form-group">
                     <label htmlFor="notes">Notes</label>
-                    <textarea className="form-control" name="notes" value={this.state.notes} onChange={this.handleInputChange} rows="3" placeholder={this.state.tickets.notes}></textarea>
+                        <textarea className="form-control" name="notes" value={this.state.notes} onChange={this.handleInputChange} rows="3"></textarea>
+                        <small id="previousNotes" className="form-text text-muted">
+                            {this.state.tickets.notes}
+                        </small>
                 </div>
                 <div className="form-group">
                     <label htmlFor="status">Status</label>
