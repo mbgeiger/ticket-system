@@ -4,6 +4,7 @@ import Home from "./component/Home";
 import Tickets from './component/Tickets';
 //import { Switch } from 'react-router/esm/react-router';
 import Signup from './component/Signup';
+import Detail from "./component/Details";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Route  exact path={"/tickets"} component={Tickets} />
         <Route  exact path={"/Signup"} component={Signup} />
         <Route  exact path={"/"} component={Home} />
+        <Route exact path={"/ticket/:id"} component={Detail} />
         </Switch>
         
 
