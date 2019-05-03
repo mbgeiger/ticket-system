@@ -22,6 +22,8 @@ class Signup extends Component {
     
     render() {
         return (
+            <div className="container">
+            <div className="jumbotron">
             <div className="signup"><h2>Create an account</h2>
             
             <div className="form-inline" >
@@ -48,7 +50,8 @@ class Signup extends Component {
                 </div>
                 </div>
                 </div>
-
+                </div>
+                </div>
             
            
 

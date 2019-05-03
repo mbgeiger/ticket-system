@@ -30,6 +30,7 @@ class Nav extends React.Component {
             let modalClose = () => this.setState({ modalShow: false });
   
       return (
+         
         <ButtonToolbar>
           <Button className="btn btn-dark"
             variant="primary"
@@ -43,7 +44,7 @@ class Nav extends React.Component {
             onHide={modalClose}
           />
         </ButtonToolbar>
-            
+        
             
             
             
@@ -169,6 +170,7 @@ class TicketDisplay extends React.Component{
                     </div>
                 </div>
             </div>
+            
         );
     }
 }
