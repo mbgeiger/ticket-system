@@ -7,6 +7,7 @@ export default {
 
     getLogin: function()
     {
+        console.log("In Axios")
         return axios.post("/api/login");
     }
 };

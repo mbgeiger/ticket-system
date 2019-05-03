@@ -1,9 +1,6 @@
 
 import React, { Component } from 'react'
-import { HashRouter, BrowserRouter, Router, Route, Link, Redirect } from "react-router-dom"
-//import logo from './logo.svg'
-import API from "../utils/API";
-import classes from '../../src/'
+import axios from "axios";
 
 class Home extends Component {
   render() {
@@ -58,18 +55,24 @@ class InputGroup extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-
-    console.log(this.state.username +" "+ this.state.password);
-    console.log("called");
-        API.getLogin()
-            .then(res =>
-                console.log(res.data)
-                //this.setState({tickets: res.data})
-                )
-                .catch(err => console.log(err));
-                
-        this.setState({login:true});
-    
+    var data='';
+    axios.post("/api/login",null,{params:{username:this.state.username, password:this.state.password}})
+          .then((response) => 
+              {
+                  if(response.data.length < 1)
+                    {
+                      console.log("Incorrect Username or Password")
+                      this.setState({login: false});
+                      console.log(this.state.login);
+                    }
+                    else
+                    {
+                      this.setState({login:true});
+                    }
+              })
+          .catch(err => console.warn(err));         
+        
+        console.log(data)
   }
 
   handleUserChange(evt) {
@@ -84,27 +87,32 @@ class InputGroup extends Component {
     });
   }
     render() {
-      return(
-        <form onSubmit={this.handleSubmit}>
-        <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text"><i className="fas fa-user"></i></span>
+      if(this.state.login)
+        {
+          document.location.href = "./signup"; 
+        }
+      else
+      {
+        return(
+            <form onSubmit={this.handleSubmit}>
+            <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text"><i className="fas fa-user"></i></span>
+                </div>
+                <input type="text" data-test="username" placeholder="Username" value={this.state.username} onChange={this.handleUserChange} required />
             </div>
-            <input type="text" data-test="username" placeholder="Username" value={this.state.username} onChange={this.handleUserChange} required />
-        </div>
-        <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text"><i className="fas fa-key"></i></span>
+            <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text"><i className="fas fa-key"></i></span>
+                </div>
+                <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
             </div>
-            <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
-        </div>
-          <button className="btn btn-dark" id="login">Login</button>
-          <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./Signup"; }}>Create Account</button>  
-      </form>
+              <button className="btn btn-dark" id="login">Login</button>
+              <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./Signup"; }}>Create Account</button>  
+          </form>
 
-      
-
-      )
+        )
+      }
     }
 
     

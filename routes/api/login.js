@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const helpDeskController = require("../../controllers/indexController");
+const indexController = require("../../controllers/indexController");
 
-router.route("/login")
+router.route("/")
     .post(indexController.login);
 
 
