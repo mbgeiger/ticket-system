@@ -7,7 +7,7 @@ const ticketSchema = new Schema({
     assigned_to: String,
     description: { type: String, required: true },
     notes: String,
-    created_by: { type: String, required: true }
+    created_by: String
 });
 
 const Ticket = mongoose.model("Ticket", ticketSchema);
