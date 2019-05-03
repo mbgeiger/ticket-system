@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 // =============================================================
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/helpdesk", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_ldr06pdp:2u3tf1fvni4hgrgf928a71rijf@ds151066.mlab.com:51066/heroku_ldr06pdp", { useNewUrlParser: true });
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
