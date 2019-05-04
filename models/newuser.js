@@ -12,7 +12,7 @@ module.exports = function validateRegisterInput(data) {
     errors.name = "Name field is required";
   }
 // Email checks
-  if (Validator.isEmpty(data.email)) {
+  if (Validator.isEmpty(data.email))  {
     errors.email = "Email field is required";
   } else if (!Validator.isEmail(data.email)) {
     errors.email = "Email is invalid";
