@@ -4,8 +4,6 @@ const express = require("express");
 const passport = require('passport');
 const routes = require("./routes");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require('cors');
 
 // Sets up the Express App
 // =============================================================
@@ -15,8 +13,6 @@ const PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//pp.use(bodyParser.json());
-//app.use(cors());
 app.use(passport.initialize());
 
 // Static directory
