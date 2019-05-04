@@ -3,8 +3,7 @@ const helpDeskController = require("../../controllers/helpDeskController");
 
 router.route("/")
     .get(helpDeskController.findAll)
-    .post(helpDeskController.create)
-    .get(helpDeskController.findOne);
+    .post(helpDeskController.create);
 
 router
     .route("/:id")

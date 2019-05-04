@@ -117,17 +117,18 @@ class InputGroup extends Component {
                 </div>
                 <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
             </div>
+
+            <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
+        </div>
+    
               <button className="btn btn-dark" id="login">Login</button>
               <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./Signup"; }}>Create Account</button>  
           </form>
 
         )
       }
+
     }
-
-    
-
-
 }
 
 
