@@ -4,7 +4,7 @@ export default {
     getTickets: function() {
         return axios.get("/api/tickets");
     },
- davidS-thrusday
+ 
     createTicket: function(ticketData) {
         return axios.post("/api/tickets", ticketData);
     },
@@ -15,6 +15,7 @@ export default {
     updateOne: function(id, ticketDetails) {
         return axios.put("/api/tickets/" + id, ticketDetails);
 
+    },
 
     getLogin: function()
     {

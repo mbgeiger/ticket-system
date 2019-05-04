@@ -34,12 +34,15 @@ class Signup extends Component {
                     placeholder="Username"
                     onChange={event => this.setState({username: event.target.value})}
                     />
+                    <br/>
+                    <br/>
                     <input
                         className="form-control"
                         type="Password"
                         placeholder="Password"
                         onChange={event => this.setState({password: event.target.value})}
                         />
+                        
                         <button
                             className="btn btn-dark"
                             type="button"
