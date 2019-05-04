@@ -91,15 +91,8 @@ class InputGroup extends Component {
           <button className="btn btn-dark" id="login">Login</button>
           <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./tickets"; }}>Create Account</button>  
       </form>
-
-      
-
       )
     }
-
-    
-
-
 }
 
 
