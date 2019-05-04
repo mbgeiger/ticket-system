@@ -1,6 +1,15 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const User = require('../models/newuser');
+newuser.use(cors());
+
+process.env.SECRET_KEY = 'secret'
+
+
 
 // API Routes
 router.use("/api", apiRoutes);
