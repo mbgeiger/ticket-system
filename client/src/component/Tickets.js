@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, ButtonToolbar, Modal} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
 
 import '../App.css'
 import API from "../utils/API";
@@ -9,6 +11,14 @@ class Tickets extends Component {
   render() {
     return (
       <div className="wrapper">
+      <MuiThemeProvider>
+            <div>
+            <AppBar
+               title="Tickets"
+             />
+          
+            </div>
+           </MuiThemeProvider>
         <Nav />
         <Ticketmodal />
         <TicketDisplay />
@@ -27,8 +37,9 @@ class Nav extends React.Component {
             let modalClose = () => this.setState({ modalShow: false });
   
       return (
+         
         <ButtonToolbar>
-          <Button
+          <Button className="btn btn-dark"
             variant="primary"
             onClick={() => this.setState({ modalShow: true })}
           >
@@ -39,7 +50,9 @@ class Nav extends React.Component {
             show={this.state.modalShow}
             onHide={modalClose}
           />
+
         </ButtonToolbar>     
+
         );
     }
 }
@@ -110,7 +123,7 @@ class Ticketmodal extends React.Component {
                    
           </Modal.Body>
           <Modal.Footer>
-            <Button id='submit' onClick= {this.handleFormSubmit}>Submit</Button>
+            <Button id='submit' className="btn btn-dark"  onClick= {this.handleFormSubmit}>Submit</Button>
           </Modal.Footer>
         </Modal>
       );
@@ -180,7 +193,9 @@ class TicketDisplay extends React.Component{
                         </div>
                     </div>
                 </div>
+
             </div>           
+
         );
     }
 }

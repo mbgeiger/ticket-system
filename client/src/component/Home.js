@@ -1,9 +1,13 @@
 
 import React, { Component } from 'react'
-import { HashRouter, BrowserRouter, Router, Route, Link, Redirect } from "react-router-dom"
-//import logo from './logo.svg'
+import axios from "axios";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import { AutoComplete } from 'material-ui';
 
-import classes from '../../src/'
+
 
 class Home extends Component {
   render() {
@@ -21,20 +25,23 @@ class Home extends Component {
 class TopWrapper extends React.Component {
     render() {
         return(
-
-    <div className="container">
-
-    
-    <div className="jumbotron">
-        <h1>IT Help Desk</h1>
-        <p>Please Login to Access Your Tickets</p>
-    </div>
-
-  </div>
-
-        )
+          <div>
+          <MuiThemeProvider>
+            <div>
+            <AppBar
+               title="IT HelpDesk"
+             />
+          
+            </div>
+           </MuiThemeProvider>
+        </div>
+      );
     }
-}
+  }
+  const style = {
+    margin: 15,
+  };
+  
 
 class InputGroup extends Component {
   constructor() {
@@ -43,6 +50,7 @@ class InputGroup extends Component {
       username: '',
       password: '',
       error: '',
+      login:''
     };
 
     this.handlePassChange = this.handlePassChange.bind(this);
@@ -57,9 +65,24 @@ class InputGroup extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-
-    console.log(this.state.username +" "+ this.state.password);
-    
+    var data='';
+    axios.post("/api/login",null,{params:{username:this.state.username, password:this.state.password}})
+          .then((response) => 
+              {
+                  if(response.data.length < 1)
+                    {
+                      console.log("Incorrect Username or Password")
+                      this.setState({login: false});
+                      console.log(this.state.login);
+                    }
+                    else
+                    {
+                      this.setState({login:true});
+                    }
+              })
+          .catch(err => console.warn(err));         
+        
+        console.log(data)
   }
 
   handleUserChange(evt) {
@@ -74,24 +97,37 @@ class InputGroup extends Component {
     });
   }
     render() {
-      return(
-        <form onSubmit={this.handleSubmit}>
-        <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text"><i className="fas fa-user"></i></span>
+      if(this.state.login)
+        {
+          document.location.href = "./signup"; 
+        }
+      else
+      {
+        return(
+            <form  onSubmit={this.handleSubmit}>
+            <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text"><i className="fas fa-user"></i></span>
+                </div>
+                <input type="text" data-test="username" placeholder="Username" value={this.state.username} onChange={this.handleUserChange} required />
             </div>
-            <input type="text" data-test="username" placeholder="Username" value={this.state.username} onChange={this.handleUserChange} required />
-        </div>
-        <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text"><i className="fas fa-key"></i></span>
+            <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text"><i className="fas fa-key"></i></span>
+                </div>
+                <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
             </div>
+
             <input type="password" data-test="password" placeholder="Password" value={this.state.password} onChange={this.handlePassChange} required />
         </div>
-          <button className="btn btn-dark" id="login">Login</button>
-          <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./tickets"; }}>Create Account</button>  
-      </form>
-      )
+    
+              <button className="btn btn-dark" id="login">Login</button>
+              <button className="btn btn-dark" id="Createaccount"  onClick={() => { document.location.href = "./Signup"; }}>Create Account</button>  
+          </form>
+
+        )
+      }
+
     }
 }
 

@@ -1,3 +1,4 @@
 module.exports = {
-    Ticket: require("./helpdesk")
+    Ticket: require("./helpdesk"),
+    Users: require("./users")
 };

@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
     getTickets: function() {
-        console.log("axios called");
         return axios.get("/api/tickets");
     },
+ 
     createTicket: function(ticketData) {
         return axios.post("/api/tickets", ticketData);
     },
@@ -14,5 +14,13 @@ export default {
     },
     updateOne: function(id, ticketDetails) {
         return axios.put("/api/tickets/" + id, ticketDetails);
+
+    },
+
+    getLogin: function()
+    {
+        console.log("In Axios")
+        return axios.post("/api/login");
+
     }
 };
