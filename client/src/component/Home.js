@@ -1,6 +1,13 @@
 
 import React, { Component } from 'react'
 import axios from "axios";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import { AutoComplete } from 'material-ui';
+
+
 
 class Home extends Component {
   render() {
@@ -18,20 +25,23 @@ class Home extends Component {
 class TopWrapper extends React.Component {
     render() {
         return(
-
-    <div className="container">
-
-    
-    <div className="jumbotron">
-        <h1>IT Help Desk</h1>
-        <p>Please Login to Access Your Tickets</p>
-    </div>
-
-  </div>
-
-        )
+          <div>
+          <MuiThemeProvider>
+            <div>
+            <AppBar
+               title="IT HelpDesk"
+             />
+          
+            </div>
+           </MuiThemeProvider>
+        </div>
+      );
     }
-}
+  }
+  const style = {
+    margin: 15,
+  };
+  
 
 class InputGroup extends Component {
   constructor() {
@@ -94,7 +104,7 @@ class InputGroup extends Component {
       else
       {
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form  onSubmit={this.handleSubmit}>
             <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text"><i className="fas fa-user"></i></span>
